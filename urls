@@ -1,0 +1,41 @@
+ dentro de un boton que ejecutara una url podemos hacerlo asi,
+// URL que quieres abrir dentro de una variable string
+    String url = "http://www.ejemplo.com";
+
+    try {
+        // Verificar si el escritorio es compatible (Desktop.isDesktopSupported())
+        if (Desktop.isDesktopSupported()) {
+            // Obtener instancia del escritorio
+            Desktop desktop = Desktop.getDesktop();
+
+            // Verificar si el manejo de navegadores web es soportado (Desktop.isSupported(Desktop.Action.BROWSE))
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+                // Abrir la URL en el navegador web predeterminado
+                desktop.browse(new URI(url));
+            } else {
+                // Manejar caso en el que no se puede abrir el navegador
+                System.out.println("No se puede abrir el navegador web.");
+            }
+        } else {
+            // Manejar caso en el que no se admite el escritorio
+            System.out.println("El escritorio no es compatible.");
+        }
+    } catch (Exception e) {
+        // Manejar excepciones
+        e.printStackTrace();
+    }
+
+
+Para hacerlo más compacto:
+try {
+        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            desktop.browse(new URI(url));
+        } else {
+            System.out.println("No se puede abrir el navegador web.");
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+evitentemente ese string en nuestro caso puede ser recuperar el texto de un textfield, que ya esté asignado e un boton como esta aqui, o algo asi.
