@@ -100,7 +100,7 @@ public class imagenJP extends javax.swing.JPanel {
          jruta.setText(file.getAbsolutePath());
       }
     }//GEN-LAST:event_jbrutaActionPerformed
-public ImagenFondo getSelectedValud(){
+public ImagenFondo getSelectedValue(){
     //metodo para devolver la propiedad del componente
     File rru = new File(jruta.getText());
     Float opa= jsOpacidad.getValue()/100f;
